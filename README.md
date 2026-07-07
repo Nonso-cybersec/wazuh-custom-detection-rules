@@ -225,5 +225,5 @@ wazuh-custom-detection-rules/
 ---
 
 *Project 5 of 10 — SOC Home Lab Detection Series*  
-*By Paul Chinonso Obinze | [LinkedIn](https://www.linkedin.com/in/paul-obinze-217a00287/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BrbhSsMZvQOii6U3LETvQ) | [Medium](https://nonsocs.medium.com)*  
+*By Paul Chinonso Obinze | [LinkedIn](https://www.linkedin.com/in/paul-obinze-217a00287/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BrbhSsMZvQOii6U3LETvQ) 
 *Previous: [Project 4 — Active Directory Attack Detection](https://github.com/Nonso-cybersec/active-directory-attack-detection)*
