@@ -68,7 +68,7 @@ The existing rule couldn't tell me which scenario I was facing. So I built one t
 
 Every element is deliberate:
 
-**`if_matched_sid: 60122`** — watches for Rule 60122 (Logon Failure) to fire first. Our rule only activates when an individual logon failure is already confirmed. This prevents false positives from non-authentication events.
+**`if_matched_sid: 60122`** — watches for Rule 60122 (Logon Failure) to fire first. The rule only activates when an individual logon failure is already confirmed. This prevents false positives from non-authentication events.
 
 **`same_field: win.eventdata.ipAddress`** — groups events by source IP. All failures must come from the same attacker address. This is the same logic Rule 60204 uses.
 
