@@ -1,0 +1,49 @@
+Project 5 — Custom Detection Rule: Password Spray Detection
+Rule ID: 100300
+Rule Level: 12 (Critical)
+MITRE: T1110.003 — Brute Force: Password Spraying
+
+Detection Quality Measurement
+==============================
+Total Rule 100300 firings: 12
+True positives: 12 (all from 10.0.2.5 spray activity)
+False positives: 0
+False positive rate: 0%
+Detection rate: 100% (when manager is running)
+
+Comparison with Rule 60204
+===========================
+Rule 60204 — Multiple Windows Logon Failures
+  Level: 10
+  MITRE: T1110 (generic — covers all brute force types)
+  Fires on: 8 events from same IP within 240 seconds
+  Cannot distinguish: brute force vs password spraying
+
+Rule 100300 — Password Spraying Detected
+  Level: 12
+  MITRE: T1110.003 (specific — password spraying only)
+  Fires on: 4 different usernames from same IP within 120 seconds
+  Distinguishes: spray pattern from single-account brute force
+
+Rule Chain
+===========
+60000 (windows_eventchannel decoder)
+  └─ 60001 (channel = Security)
+      └─ 60104 (severityValue = AUDIT_FAILURE)
+          └─ 60105 (eventID = 4625)
+              └─ 60122 (eventID = 4625, refined)
+                  └─ 100300 (same IP, different username)
+
+Operational Finding
+====================
+Manager downtime creates delayed detection scenario.
+Events queued during 5-minute outage fired correctly on restart
+but with 5-minute delay. Real-time detection requires
+continuous manager availability.
+
+Recalibration Table
+====================
+Small lab (< 10 accounts):     frequency=4,  timeframe=120
+Small business (10-100):        frequency=8,  timeframe=120
+Mid-size enterprise (100-1000): frequency=15, timeframe=60
+Large enterprise (1000+):       frequency=20, timeframe=60
